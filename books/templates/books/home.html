@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %} 
+<style>
+    body {
+      background-image: url('/static/images/library_background.jpeg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
+    </style>
+
+<h4> Welcome to our library!</h4><br>
+<div style="color:#030421">
+  <p>This is a legal agreement between you, the Purchaser, and Library. Purchasing or downloading of any Library product (Library Free, Library PRO, Library Email), constitutes your acceptance of the terms of this license</p>
+  <p>A license grants you a non-exclusive and non-transferable right to use and incorporate the item in your personal or commercial projects.</p>
+  <h3>Library Free License</h3>
+  <p>Library Free is available under MIT License</p>
+  <p>Copyright 2022 Library</p>
+  <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+  <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+  <li class="list-inline-item">
+    Copyright &copy; 2022
+    <a href="." class="link-secondary">Library</a>.
+    All rights reserved.
+  </li>    
+</div>
+<a href="{% url 'admin:index' %}">
+<button type="button" class="btn btn-primary" >Admin login</button><br><br><br><br> 
+</a>
+{% endblock content %}  
+
+
+

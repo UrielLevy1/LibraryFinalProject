@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+{% block content %} 
+
+<form action="{% url 'books:loan_book_action' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}    
+    <table>
+        {{ loanform.as_p }}
+        </table>
+        <input type="submit">
+    </form>        
+    
+{% endblock content %} 
+

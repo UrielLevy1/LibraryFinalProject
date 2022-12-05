@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+
+<div class="row row-cols-1 row-cols-md-5 g-4">
+        {% for book in book_list %}   
+        <div class="col">
+          <div class="card">
+            <img src= "{% static 'images/' %}{{ book.image }}" alt="a" width="150" height="150">
+            <div class="card-body">
+              <h5 class="card-title">{{ book.name}}</h5>
+              <p class="card-text"> {{ book.author }}</p>
+              <p class="card-text"> {{book.year_published}}</p>
+              {% if request.user.is_staff %}
+              <a href="{% url 'books:delete' book.id %}?id={{ book.id }}" class="btn btn-danger">Delete</a>
+              {% endif %}
+              <a href="{% url 'books:loan_book_action' %}" class="btn btn-danger">Loan book</a>
+            </div>
+          </div>
+        </div>
+        {{ message }}
+        {% endfor %}
+    </div>
+{% endblock%}
+
+
+{% comment %} {% for message in messages %}
+        <p id="messages">{{ message }}</p>
+        {% endfor %}  {% endcomment %}
