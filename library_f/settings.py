@@ -30,12 +30,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',   
     'books',
-    'whitenoise.runserver_nostatic',       
+    # 'whitenoise.runserver_nostatic',       
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -114,10 +114,12 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = 'images/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
     
-]
+# ]
+
+os.path.join(BASE_DIR,  'static'),
 
 LOGOUT_REDIRECT_URL='/'
 LOGIN_REDIRECT_URL='/'
@@ -127,6 +129,7 @@ LOGIN_REDIRECT_URL='/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
