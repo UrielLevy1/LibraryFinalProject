@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from books.forms import BookForm, AuthorForm, LoanForm
-from books.models import Book, Author, Loan
+from books.forms import BookForm, AuthorForm, LoanForm, ReviewForm
+from books.models import Book, Author, Loan, Reviews
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import authenticate
@@ -125,20 +125,29 @@ def delete_author(request, pk):
     return redirect('books:authors')
 
 
-# def addreview(request):
-#     context = {
-#         'loanform' : LoanForm(), 
-#     }
-#     return render(request,'books/add_review.html', context)
+def addreview(request):
+    context = {
+        'reviewform' : ReviewForm(), 
+    }
+    return render(request,'books/add_review.html', context)
     
-# def add_review_action(request):
-#     loanform = LoanForm(request.POST, request.FILES)
-#     if loanform.is_valid():
-#         loanform.save()
-#         return redirect('books:reviews_list')
-#     else:
-#         print("error")
-#         context = {
-#             'loanform': loanform,
-#         }
-#         return render(request, 'add_review.html', context)    
+def add_review_action(request):
+    reviewform = ReviewForm(request.POST, request.FILES)
+    if reviewform.is_valid():
+        reviewform.save()
+        return redirect('books:reviews_list')
+    else:
+        print("error")
+        context = {
+            'reviewform': reviewform,
+        }
+        return render(request, 'addreview.html' , context)    
+    
+    
+@login_required 
+def reviews_list(request):
+    all_reviews = Reviews.objects.all()
+    context = {
+        'reviews_list': all_reviews,
+    }
+    return render(request,'books/reviews.html', context=context)    

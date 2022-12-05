@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+<div class="row row-cols-1 row-cols-md-5 g-4">
+        {% for review in reviews_list %}   
+        <div class="col">
+          <div class="card">
+            {% comment %} <img src= "{% static 'images/' %}{{ book.image }}" alt="a" width="150" height="150"> {% endcomment %}
+            <div class="card-body">
+              <h5 class="card-text"> {{ review.bookID }}</p>
+              <h5 class="card-title">{{ review.stars }}</h5>
+              <p class="card-text"> {{ review.text }}</p>
+              <p class="card-text"> {{ review.custID }}</p>
+            </div>
+          </div>
+        </div>
+        {{ message }}
+        {% endfor %}
+    </div>
+{% endblock%}

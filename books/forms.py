@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Book, Author, Loan
+from .models import Book, Author, Loan, Reviews
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
@@ -18,7 +18,12 @@ class AuthorForm(ModelForm):
 class LoanForm(ModelForm):
     class Meta:
         model = Loan
-        fields = '__all__'        
+        fields = '__all__'       
+        
+class ReviewForm(ModelForm):
+    class Meta:
+        model = Reviews
+        fields = '__all__'  
         
         
 class CreateuserForm(UserCreationForm):
