@@ -4,7 +4,7 @@
 <form action="{% url 'books:add_author_action' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}    
     <table>
-        {{ authorform.as_p }}
+        {{ authorform.as_table }}
         </table>
         <input type="submit">
     </form>        

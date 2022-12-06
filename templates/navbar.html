@@ -17,8 +17,11 @@
       <img src="/static/images/library_logo.jpeg" width="100" height="50" alt="">
     </a>
   </nav>
+  <a href="{% url 'admin:index' %}">
+    <button type="button" class="btn btn-secondary me-1" >Admin login</button>
+    </a>
   <div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle me-1" data-toggle="dropdown">
+    <button type="button" class="btn btn-secondary dropdown-toggle me-1" data-toggle="dropdown">
       Books
     </button>
     <div class="dropdown-menu">
@@ -27,16 +30,16 @@
     </div>
   </div>
   <div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle me-1" data-toggle="dropdown">
+    <button type="button" class="btn btn-secondary dropdown-toggle me-1" data-toggle="dropdown">
       Authors
     </button>
     <div class="dropdown-menu">
       <a class="dropdown-item" href="{%url 'books:authors' %}">Authors list</a>
-      <a class="dropdown-item" href="{%url 'books:addbook' %}">Add author</a>
+      <a class="dropdown-item" href="{%url 'books:addauthor' %}">Add author</a>
     </div>
   </div> 
   <div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle me-1" data-toggle="dropdown">
+    <button type="button" class="btn btn-secondary dropdown-toggle me-1" data-toggle="dropdown">
       Loans
     </button>
     <div class="dropdown-menu">
@@ -45,7 +48,7 @@
     </div>
   </div>
   <div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <button type="button" class="btn btn-secondary dropdown-toggle  me-1" data-toggle="dropdown">
       Reviews
     </button>
     <div class="dropdown-menu">
@@ -61,10 +64,10 @@
       {% if user.is_authenticated %}
         <li><span>Hello {{ user.username }}! &nbsp;</span><br>
         {% comment %} <img style="width:50px;height:50px" src="{% static 'images/' %}{{user.userprofile.image}}"> {% endcomment %}
-        <li><a href="{% url 'logout' %}" button type="button" class="btn btn-warning">Log Out</a>
+        <li><a href="{% url 'logout' %}" button type="button" class="btn btn-warning me-1">Log Out</a>
       {% else %}
         <li button type="button" class="btn btn-warning me-1"><a href="{% url 'register' %}">Register</a>&nbsp;
-        <li button type="button" class="btn btn-warning"><a href="{% url 'login' %}">Log In</a>
+        <li button type="button" class="btn btn-warning  me-1"><a href="{% url 'login' %}">Log In</a>
       {% endif %}
     </ul> 
     <!-- end login register-->
@@ -76,60 +79,6 @@
       <input name="search" class="form-control me-1" type="search" placeholder="Search book by author" aria-label="Search">
       <button class="btn btn-primary" type="submit">Search</button>
     </form>
-
-
-
-    {% comment %} <div style = "position:absolute; left:600px; top:20px;">
-      <a href="{% url 'admin:index' %}">
-     <button type="button" class="btn btn-primary" >Admin </button><br><br><br><br> 
-     </a>
-   </div> {% endcomment %}
-
-
-
-    {% comment %} <div class="btn-group dropleft">
-      <form>  
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-          Search
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" role="search" href="{% url 'books:search' %}">Search book</a>
-          <a class="dropdown-item" role="search" href="{% url 'books:search2' %}">Search author</a>
-        </div>
-      </form>   
-      </div>       
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-{% comment %} <div class="container">
-    <div class="row">    
-        <div class="col-xs-8 col-xs-offset-2">
-		    <div class="input-group">
-                <div class="input-group-btn search-panel">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    	<span id="search_concept">Filter by</span> <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#contains">Contains</a></li>
-                      <li><a href="#its_equal">It's equal</a></li>
-                      <li><a href="#greather_than">Greather than ></a></li>
-                      <li><a href="#less_than">Less than </a></li>
-                      <li class="divider"></li>
-                      <li><a href="#all">Anything</a></li>
-                    </ul>
-                </div>
-                <input type="hidden" name="search_param" value="all" id="search_param">         
-                <input type="text" class="form-control" name="x" placeholder="Search term...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
-            </div>
-        </div>
-	</div>
-</div>
-  </div> {% endcomment %}
 </nav>
 </body>
 </html>

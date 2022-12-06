@@ -1,17 +1,18 @@
+import datetime
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from books.forms import BookForm, AuthorForm, LoanForm, ReviewForm
 from books.models import Book, Author, Loan, Reviews
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 
 
 def home(request):
     return render(request,'books/home.html')
 
 
-@login_required 
 def books_list(request):
     my_books = Book.objects.all()
     context = {
@@ -54,7 +55,7 @@ def add_author_action(request):
         }
         return render(request, 'add_author.html', context)
     
-    
+@login_required     
 def loan_book(request):
     context = {
         'loanform' : LoanForm(),
@@ -73,7 +74,7 @@ def loan_book_action(request):
         }
         return render(request, 'books/loan_book.html', context)
 
-
+@login_required 
 def add_book(request):
     context = {
         'bookform' : BookForm(), 
@@ -93,7 +94,6 @@ def add_book_action(request):
         return render(request, 'addbook.html', context)
 
 
-@login_required
 def search(request):
     my_search = request.GET.get('search')
     my_books = Book.objects.filter(name__contains=my_search)
@@ -102,7 +102,6 @@ def search(request):
     }   
     return render(request, 'books/books.html', context=context)
 
-@login_required
 def search_by_author(request):
     my_search = request.GET.get('search')
     my_books = Book.objects.filter(author__contains=my_search)
@@ -111,6 +110,7 @@ def search_by_author(request):
     }   
     return render(request, 'books/books.html', context=context)
 
+@login_required
 def delete(request, pk):
     Book.objects.filter(id=pk).delete()
     # user = authenticate(request)
@@ -118,13 +118,13 @@ def delete(request, pk):
     messages.error(request, "Book deleted")
     return redirect('books:books_list')
 
-
+@login_required 
 def delete_author(request, pk):
     Author.objects.filter(id=pk).delete()
     messages.error(request, "Author deleted")
     return redirect('books:authors')
 
-
+@login_required 
 def addreview(request):
     context = {
         'reviewform' : ReviewForm(), 
@@ -144,10 +144,26 @@ def add_review_action(request):
         return render(request, 'addreview.html' , context)    
     
     
-@login_required 
 def reviews_list(request):
     all_reviews = Reviews.objects.all()
     context = {
         'reviews_list': all_reviews,
     }
-    return render(request,'books/reviews.html', context=context)    
+    return render(request,'books/reviews.html', context=context)       
+
+
+
+
+# def loanbook2(request, pk):
+#     user = request.user
+#     my_book = Book.objects.get(id=pk)
+#     context = {
+#             'my_book': my_book,
+#     }
+#     newloan = Loan()
+#     newloan.user = user
+#     newloan.book=my_book
+#     newloan.loan_date= datetime.now()
+#     newloan.return_date= newloan.loan_date+datetime.timedelta(4)
+#     newloan.save()
+#     return render(request, 'books/books.html', context=context)

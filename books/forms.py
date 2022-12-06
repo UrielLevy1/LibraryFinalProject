@@ -18,13 +18,14 @@ class AuthorForm(ModelForm):
 class LoanForm(ModelForm):
     class Meta:
         model = Loan
-        fields = '__all__'       
+        fields = '__all__'
+
         
 class ReviewForm(ModelForm):
     class Meta:
         model = Reviews
         fields = '__all__'  
-        
+
         
 class CreateuserForm(UserCreationForm):
     class Meta:
@@ -32,9 +33,8 @@ class CreateuserForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
         
         
-class BookForm(ModelForm):
-    class Meta:
-        model = Book
-        fields = ['name', 'author', 'year_published', 'type', 'image']        
-        
-        
+# class BookForm(ModelForm):
+#     class Meta:
+#         model = Book
+#         fields = ['name', 'author', 'year_published', 'type', 'image'] 
+
