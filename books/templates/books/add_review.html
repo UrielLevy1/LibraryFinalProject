@@ -1,9 +1,11 @@
 {% extends 'main.html' %}
 {% block content %} 
-
+<br><h3>
+    Select a book and add your review!
+    </h3><br><br>
 <form action="{% url 'books:add_review_action' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}    
-    <table>
+    <table class="table table-striped">
         {{ reviewform.as_table }}
         </table>
         <input type="submit">

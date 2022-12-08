@@ -1,11 +1,13 @@
 {% extends 'main.html' %}
 {% block content %} 
-
+<br><h3>
+This is a manual loan form, you can also loan book directly from the books list here:  <a href="{% url 'books:books_list' %}" class="btn btn-info">Books list</a>
+</h3><br><br>
 <form action="{% url 'books:loan_book_action' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}    
-    <table>
-        {{ loanform.as_p }}
-        </table>
+    <table class="table table-striped">
+        {{ loanform.as_table }}
+    </table>
         <input type="submit">
     </form>        
     

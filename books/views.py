@@ -66,7 +66,7 @@ def loan_book_action(request):
     loanform = LoanForm(request.POST, request.FILES)
     if loanform.is_valid():
         loanform.save()
-        return redirect('books:books_list')
+        return redirect("books:loans_list" )
     else:
         print("error")
         context = {
@@ -135,7 +135,7 @@ def add_review_action(request):
     reviewform = ReviewForm(request.POST, request.FILES)
     if reviewform.is_valid():
         reviewform.save()
-        return redirect('books:reviews_list')
+        return redirect('booksreviews')
     else:
         print("error")
         context = {
@@ -153,17 +153,31 @@ def reviews_list(request):
 
 
 
+def loanbook2(request, pk):
+    user = request.user
+    my_book = Book.objects.get(id=pk)
+    context = {
+            'my_book': my_book,
+    }
+    newloan = Loan()
+    newloan.custID = user
+    newloan.bookID=my_book
+    newloan.loan_date= datetime.date.today()
+    # newloan.return_date= newloan.loan_date+datetime.timedelta(4)
+    newloan.save()
+    return redirect("books:loans_list" )
 
-# def loanbook2(request, pk):
+
+# def addreview_2(request, pk):
 #     user = request.user
-#     my_book = Book.objects.get(id=pk)
+#     my_review = Book.objects.get(id=pk)
 #     context = {
-#             'my_book': my_book,
+#             'my_review': my_review,
 #     }
-#     newloan = Loan()
-#     newloan.user = user
-#     newloan.book=my_book
-#     newloan.loan_date= datetime.now()
-#     newloan.return_date= newloan.loan_date+datetime.timedelta(4)
-#     newloan.save()
-#     return render(request, 'books/books.html', context=context)
+#     newreview = Reviews()
+#     newreview.custID = user
+#     newreview.bookID=my_review
+#     newreview.text
+#     newreview.stars
+#     newreview.save()
+#     return redirect("books:addreview" )

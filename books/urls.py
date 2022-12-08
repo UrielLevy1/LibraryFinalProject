@@ -23,4 +23,6 @@ path('loan_book_action/', views.loan_book_action, name="loan_book_action"),
 path('addreview/', views.addreview, name="addreview"),
 path('add_review_action', views.add_review_action, name="add_review_action"),
 path('reviews', views.reviews_list, name="reviews"),
+path('loan_book_action_2/<pk>/', views.loanbook2, name="loan_book_action_2"), 
+# path('addreview_2/<pk>/', views.addreview_2, name="addreview_2"), 
 ]

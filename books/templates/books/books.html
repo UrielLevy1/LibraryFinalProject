@@ -13,7 +13,8 @@
               {% if request.user.is_staff %}
               <a href="{% url 'books:delete' book.id %}?id={{ book.id }}" class="btn btn-danger">Delete</a>
               {% endif %}
-              <a href="{% url 'books:loan_book_action' %}" class="btn btn-danger">Loan book</a>
+              <a href="{% url 'books:loan_book_action_2' book.id %}?id={{ book.id }}" class="btn btn-info">Loan book</a><br><br>
+                {% comment %} <a href="{% url 'books:addreview' %}" class="btn btn-success">Leave a review</a> {% endcomment %}
             </div>
           </div>
         </div>

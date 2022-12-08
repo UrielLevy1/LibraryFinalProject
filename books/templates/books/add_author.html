@@ -1,9 +1,12 @@
 {% extends 'main.html' %}
-{% block content %} 
+{% block content %}
+<br><h3>
+    Create a new author!
+    </h3><br><br> 
 
 <form action="{% url 'books:add_author_action' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}    
-    <table>
+    <table class="table table-striped">
         {{ authorform.as_table }}
         </table>
         <input type="submit">

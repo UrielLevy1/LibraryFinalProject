@@ -11,9 +11,6 @@
               <p class="card-text"> {{ loan.bookID }}</p>
               <p class="card-text"> {{ loan.loan_date}}</p>
               <p class="card-text"> {{ loan.return_date}}</p>
-              {% comment %} {% if request.user.is_staff %}
-              <a href="{% url 'books:delete' book.id %}?id={{ book.id }}" class="btn btn-danger">Delete</a>
-              {% endif %}  {% endcomment %}
             </div>
           </div>
         </div>
