@@ -18,7 +18,6 @@ We use django 4.1.3, python 3.10.4, bootstrap 4.4.1, jquery 3.3.1 in our app.
 
 
 4. Run the project:
-
     python manage.py runserver
 
 
